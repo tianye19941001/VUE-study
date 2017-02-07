@@ -13,13 +13,16 @@
 </template>
 
 <script>
+import Store from "./store.js"
+console.log(Store);
+
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Todo list',
       msgH: '<span>hello ty</span>',
-      items:[],
+      items:Store.fetch(),
       liClass:"thisisLiClass",
       newItem:""
     }
@@ -34,6 +37,14 @@ export default {
         isFinished:false
       })
       this.newItem = "";
+    }
+  },
+  watch:{
+    items:{
+      handler: function(items){
+        Store.save(items);
+      },
+      deep: true
     }
   }
 }
