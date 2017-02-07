@@ -3,7 +3,8 @@
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>上方首页内容</h2>
-    <firstcomponent></firstcomponent>
+    <firstcomponent fatherO="asdas" v-on:child-tell="listenboy"></firstcomponent>
+    <p>child {{childWords}}</p>
     <secondcomponent></secondcomponent>
     <ul>
       <li><router-link to="/first">链接点1</router-link></li>
@@ -20,10 +21,16 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      childWords: ""
     }
   },
-  components: { firstcomponent,secondcomponent }
+  components: { firstcomponent,secondcomponent },
+  methods:{
+    listenboy:function(msg) {
+      this.childWords = msg;
+    }
+  }
 }
 </script>
 

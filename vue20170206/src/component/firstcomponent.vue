@@ -1,6 +1,6 @@
 <template>
   <div id="firstcomponent">
-    <h1>来自firstcomponent的内容</h1>
+    <h1 v-on:click="onClickMe">来自firstcomponent的内容</h1>
     <a> written by {{ author }} </a>
   </div>
 </template>
@@ -11,6 +11,13 @@ export default {
     return {
       author: "田野"
     }
+  },
+  props: ["fatherO"],
+  methods: {
+  	onClickMe: function() {
+  		console.log(this.fatherO)
+  		this.$emit("child-tell", this.author)
+  	}
   }
 }
 </script>
